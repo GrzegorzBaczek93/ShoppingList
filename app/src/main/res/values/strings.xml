@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ShoppingList</string>
+
+    <!--  Search  -->
+    <string name="search_placeholder">Search recipe</string>
 </resources>
