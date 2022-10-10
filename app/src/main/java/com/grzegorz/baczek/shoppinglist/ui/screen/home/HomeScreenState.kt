@@ -1,9 +1,31 @@
 package com.grzegorz.baczek.shoppinglist.ui.screen.home
 
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import com.grzegorz.baczek.shoppinglist.utils.base.BaseScreenState
 
-sealed class HomeScreenState : BaseScreenState {
-    object Loading : HomeScreenState()
-    object Success : HomeScreenState()
-    object Error : HomeScreenState()
+sealed class HomeScreenState {
+    @Composable
+    abstract fun BuildUI()
+
+    object Loading : HomeScreenState() {
+        @Composable
+        override fun BuildUI() {
+            Text(text = "Home loading...")
+        }
+    }
+
+    object Content : HomeScreenState() {
+        @Composable
+        override fun BuildUI() {
+            Text(text = "Home content.")
+        }
+    }
+
+    object Error : HomeScreenState() {
+        @Composable
+        override fun BuildUI() {
+            Text(text = "Home error!")
+        }
+    }
 }

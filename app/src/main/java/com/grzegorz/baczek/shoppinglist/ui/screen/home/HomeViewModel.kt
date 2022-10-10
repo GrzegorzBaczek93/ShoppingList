@@ -19,7 +19,7 @@ class HomeViewModel : BaseViewModel<HomeArguments>() {
         logD("onArgumentsObtained")
         viewModelScope.launch {
             delay(5000L)
-            state = HomeScreenState.Success
+            state = HomeScreenState.Content
         }
     }
 }
