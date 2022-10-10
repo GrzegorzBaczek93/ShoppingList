@@ -2,7 +2,6 @@ package com.grzegorz.baczek.shoppinglist.ui.screen.home
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import com.grzegorz.baczek.shoppinglist.utils.base.BaseScreenState
 
 sealed class HomeScreenState {
     @Composable
