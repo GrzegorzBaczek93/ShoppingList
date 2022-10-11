@@ -21,22 +21,21 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.grzegorz.baczek.shoppinglist.R
 import com.grzegorz.baczek.shoppinglist.utils.compose.CustomTextField
 
-private object SearchBarDimens {
+private val dimens = object {
     val height = 56.dp
     val iconSize = 24.dp
     val iconPadding = (height - iconSize) / 2
     val textPadding = height - iconPadding
 }
 
-private object SearchBarContentDescription {
-    const val leadingIcon = "Search icon"
-    const val trailingIcon = "Remove search text icon"
+private val contentDescription = object {
+    val leadingIcon = "Search icon"
+    val trailingIcon = "Remove search text icon"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,7 +48,7 @@ fun SearchBar(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(SearchBarDimens.height)
+            .height(dimens.height)
             .background(
                 shape = CircleShape, color = MaterialTheme.colorScheme.primaryContainer,
             ),
@@ -57,10 +56,10 @@ fun SearchBar(
         Image(
             modifier = Modifier
                 .align(Alignment.CenterStart)
-                .padding(start = SearchBarDimens.iconPadding)
-                .size(SearchBarDimens.iconSize),
+                .padding(start = dimens.iconPadding)
+                .size(dimens.iconSize),
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_search),
-            contentDescription = SearchBarContentDescription.leadingIcon,
+            contentDescription = contentDescription.leadingIcon,
             contentScale = ContentScale.Fit,
             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
         )
@@ -69,7 +68,7 @@ fun SearchBar(
                 .align(Alignment.Center)
                 .fillMaxWidth()
                 .wrapContentHeight()
-                .padding(horizontal = SearchBarDimens.textPadding),
+                .padding(horizontal = dimens.textPadding),
             value = text,
             onValueChange = onTextChanged,
             textStyle = MaterialTheme.typography.bodyMedium,
@@ -88,11 +87,11 @@ fun SearchBar(
             Image(
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
-                    .padding(end = SearchBarDimens.iconPadding)
-                    .size(SearchBarDimens.iconSize)
+                    .padding(end = dimens.iconPadding)
+                    .size(dimens.iconSize)
                     .clickable { onCancelClick() },
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_cancel),
-                contentDescription = SearchBarContentDescription.trailingIcon,
+                contentDescription = contentDescription.trailingIcon,
                 contentScale = ContentScale.Fit,
                 colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
             )

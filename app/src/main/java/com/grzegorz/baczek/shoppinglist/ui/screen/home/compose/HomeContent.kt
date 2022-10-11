@@ -15,7 +15,7 @@ import com.grzegorz.baczek.shoppinglist.model.CheckList
 import com.grzegorz.baczek.shoppinglist.ui.component.home.Card
 import com.grzegorz.baczek.shoppinglist.ui.component.home.SearchBar
 
-private object HomeContentDimens {
+private val dimens = object {
     val contentPadding = 16.dp
     val itemsSpacer = 8.dp
     val listPaddingTop = 16.dp
@@ -30,16 +30,16 @@ fun HomeContent(
 ) {
     Column(
         modifier = Modifier
-            .padding(top = HomeContentDimens.contentPadding)
-            .padding(horizontal = HomeContentDimens.contentPadding),
+            .padding(top = dimens.contentPadding)
+            .padding(horizontal = dimens.contentPadding),
     ) {
         SearchBar(text = searchText, onTextChanged = onSearchTextChanged, onCancelClick = onCancelClick)
         LazyColumn(
             modifier = Modifier
                 .wrapContentHeight()
                 .fillMaxWidth(),
-            verticalArrangement = Arrangement.spacedBy(HomeContentDimens.itemsSpacer),
-            contentPadding = PaddingValues(vertical = HomeContentDimens.listPaddingTop),
+            verticalArrangement = Arrangement.spacedBy(dimens.itemsSpacer),
+            contentPadding = PaddingValues(vertical = dimens.listPaddingTop),
         ) {
             items(data) { singleItem ->
                 Card(item = singleItem)

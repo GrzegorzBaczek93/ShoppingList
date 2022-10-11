@@ -11,8 +11,8 @@ import androidx.compose.ui.res.vectorResource
 import com.grzegorz.baczek.shoppinglist.R
 import com.grzegorz.baczek.shoppinglist.utils.compose.noRippleClickable
 
-private object ContentDescription {
-    const val icon = "Delete button"
+private val contentDescription = object {
+    val icon = "Delete button"
 }
 
 @Composable
@@ -25,7 +25,7 @@ fun DeleteButton(
             onClick()
         },
         imageVector = ImageVector.vectorResource(id = R.drawable.ic_delete),
-        contentDescription = ContentDescription.icon,
+        contentDescription = contentDescription.icon,
         contentScale = ContentScale.Fit,
         colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.error)
     )

@@ -21,7 +21,7 @@ import com.grzegorz.baczek.shoppinglist.ui.theme.replyLightPrimaryContainer
 
 private const val MAX_ITEMS = 3
 
-private object CardDimens {
+private val dimens = object {
     val cardPadding = 2.dp
     val elevation = 2.dp
     val contentPadding = 12.dp
@@ -34,15 +34,15 @@ fun Card(
 ) {
     Surface(
         modifier = modifier
-            .padding(CardDimens.cardPadding)
+            .padding(dimens.cardPadding)
             .wrapContentHeight()
             .fillMaxWidth(),
-        shadowElevation = CardDimens.elevation,
+        shadowElevation = dimens.elevation,
         shape = MaterialTheme.shapes.medium,
         contentColor = MaterialTheme.colorScheme.primaryContainer,
     ) {
         Column(
-            modifier = Modifier.padding(CardDimens.contentPadding),
+            modifier = Modifier.padding(dimens.contentPadding),
         ) {
             Title(text = item.title)
             item.items.take(MAX_ITEMS).forEach { SingleItem(text = it.text) }
