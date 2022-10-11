@@ -39,7 +39,8 @@ fun CustomTextField(
     cursorBrush: Brush = SolidColor(Color.Black),
     placeholder: @Composable () -> Unit,
 ) {
-    BasicTextField(value = value,
+    BasicTextField(
+        value = value,
         modifier = modifier,
         onValueChange = onValueChange,
         enabled = enabled,
@@ -68,5 +69,6 @@ fun CustomTextField(
                 isError = false,
                 interactionSource = interactionSource,
             )
-        })
+        }
+    )
 }

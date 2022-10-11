@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.grzegorz.baczek.shoppinglist.navigation.Navigation
+import com.grzegorz.baczek.shoppinglist.ui.navigation.Navigation
 import com.grzegorz.baczek.shoppinglist.ui.theme.ShoppingListTheme
 
 class MainActivity : ComponentActivity() {

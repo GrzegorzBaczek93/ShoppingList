@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 /**
  * Base ViewModel for all ViewModels in the app
  */
-abstract class BaseViewModel<in T: BaseArguments>: ViewModel() {
+abstract class BaseViewModel<in T : BaseArguments> : ViewModel() {
 
     private var areSet = false
 

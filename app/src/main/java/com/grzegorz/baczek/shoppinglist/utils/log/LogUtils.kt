@@ -10,4 +10,3 @@ inline fun <reified T> T.logI(message: String) = Log.i(TAG, message)
 inline fun <reified T> T.logW(message: String) = Log.w(TAG, message)
 inline fun <reified T> T.logD(message: String) = Log.d(TAG, message)
 inline fun <reified T> T.logE(message: String) = Log.e(TAG, message)
-
