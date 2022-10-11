@@ -4,8 +4,8 @@ import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.compose.HomeScreen
-import com.grzegorz.baczek.shoppinglist.ui.screen.list.ListArguments
-import com.grzegorz.baczek.shoppinglist.ui.screen.list.compose.ListScreen
+import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
+import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.compose.CheckListScreen
 import com.grzegorz.baczek.shoppinglist.utils.base.BaseArguments
 import kotlinx.parcelize.Parcelize
 
@@ -25,10 +25,10 @@ sealed class Screen(
     }
 
     @Parcelize
-    data class List(override val arguments: ListArguments) : Screen(arguments) {
+    data class CheckList(override val arguments: CheckListArguments) : Screen(arguments) {
         @Composable
         override fun Content() {
-            ListScreen(arguments)
+            CheckListScreen(arguments)
         }
     }
 }

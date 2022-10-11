@@ -10,6 +10,9 @@ fun HomeScreen(arguments: HomeArguments) {
     val viewModel = getViewModel<HomeViewModel>()
     viewModel.setArguments(arguments)
     viewModel.state.BuildUI(
-        onButtonClick = viewModel::onButtonClicked,
+        data = viewModel.data,
+        searchText = viewModel.searchText,
+        onSearchTextChanged = viewModel::onSearchTextChanged,
+        onCancelClick = viewModel::onCancelClick,
     )
 }

@@ -16,25 +16,61 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = replyDarkPrimary,
+    onPrimary = replyDarkOnPrimary,
+    primaryContainer = replyDarkPrimaryContainer,
+    onPrimaryContainer = replyDarkOnPrimaryContainer,
+    inversePrimary = replyDarkPrimaryInverse,
+    secondary = replyDarkSecondary,
+    onSecondary = replyDarkOnSecondary,
+    secondaryContainer = replyDarkSecondaryContainer,
+    onSecondaryContainer = replyDarkOnSecondaryContainer,
+    tertiary = replyDarkTertiary,
+    onTertiary = replyDarkOnTertiary,
+    tertiaryContainer = replyDarkTertiaryContainer,
+    onTertiaryContainer = replyDarkOnTertiaryContainer,
+    error = replyDarkError,
+    onError = replyDarkOnError,
+    errorContainer = replyDarkErrorContainer,
+    onErrorContainer = replyDarkOnErrorContainer,
+    background = replyDarkBackground,
+    onBackground = replyDarkOnBackground,
+    surface = replyDarkSurface,
+    onSurface = replyDarkOnSurface,
+    inverseSurface = replyDarkInverseSurface,
+    inverseOnSurface = replyDarkInverseOnSurface,
+    surfaceVariant = replyDarkSurfaceVariant,
+    onSurfaceVariant = replyDarkOnSurfaceVariant,
+    outline = replyDarkOutline
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-        /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = replyLightPrimary,
+    onPrimary = replyLightOnPrimary,
+    primaryContainer = replyLightPrimaryContainer,
+    onPrimaryContainer = replyLightOnPrimaryContainer,
+    inversePrimary = replyLightPrimaryInverse,
+    secondary = replyLightSecondary,
+    onSecondary = replyLightOnSecondary,
+    secondaryContainer = replyLightSecondaryContainer,
+    onSecondaryContainer = replyLightOnSecondaryContainer,
+    tertiary = replyLightTertiary,
+    onTertiary = replyLightOnTertiary,
+    tertiaryContainer = replyLightTertiaryContainer,
+    onTertiaryContainer = replyLightOnTertiaryContainer,
+    error = replyLightError,
+    onError = replyLightOnError,
+    errorContainer = replyLightErrorContainer,
+    onErrorContainer = replyLightOnErrorContainer,
+    background = replyLightBackground,
+    onBackground = replyLightOnBackground,
+    surface = replyLightSurface,
+    onSurface = replyLightOnSurface,
+    inverseSurface = replyLightInverseSurface,
+    inverseOnSurface = replyLightInverseOnSurface,
+    surfaceVariant = replyLightSurfaceVariant,
+    onSurfaceVariant = replyLightOnSurfaceVariant,
+    outline = replyLightOutline
 )
 
 @Composable
@@ -62,7 +98,8 @@ fun ShoppingListTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = typography,
+        shapes = shapes,
         content = content
     )
 }

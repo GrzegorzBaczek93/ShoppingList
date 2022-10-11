@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.grzegorz.baczek.shoppinglist.ui.component.common.AppContainer
 import com.grzegorz.baczek.shoppinglist.ui.navigation.Navigation
 import com.grzegorz.baczek.shoppinglist.ui.theme.ShoppingListTheme
 
@@ -15,8 +16,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ShoppingListTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                AppContainer {
                     Navigation()
                 }
             }

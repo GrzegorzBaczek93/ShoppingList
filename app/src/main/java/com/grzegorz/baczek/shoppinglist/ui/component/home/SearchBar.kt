@@ -1,4 +1,4 @@
-package com.grzegorz.baczek.shoppinglist.ui.component
+package com.grzegorz.baczek.shoppinglist.ui.component.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -72,7 +72,7 @@ fun SearchBar(
                 .padding(horizontal = SearchBarDimens.textPadding),
             value = text,
             onValueChange = onTextChanged,
-            textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.primary),
+            textStyle = MaterialTheme.typography.bodyMedium,
             singleLine = true,
             placeholder = {
                 Text(
@@ -80,10 +80,7 @@ fun SearchBar(
                     modifier = Modifier
                         .fillMaxWidth()
                         .wrapContentHeight(),
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Start,
-                    ),
+                    style = MaterialTheme.typography.bodyMedium,
                 )
             },
         )

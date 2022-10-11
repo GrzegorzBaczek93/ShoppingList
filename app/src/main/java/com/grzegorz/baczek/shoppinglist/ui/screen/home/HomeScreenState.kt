@@ -1,42 +1,53 @@
 package com.grzegorz.baczek.shoppinglist.ui.screen.home
 
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import com.grzegorz.baczek.shoppinglist.model.CheckList
+import com.grzegorz.baczek.shoppinglist.ui.screen.home.compose.HomeContent
 
 sealed class HomeScreenState {
     @Composable
     abstract fun BuildUI(
-        onButtonClick: () -> Unit,
+        data: List<CheckList>,
+        searchText: String,
+        onSearchTextChanged: (String) -> Unit,
+        onCancelClick: () -> Unit,
     )
 
     object Loading : HomeScreenState() {
         @Composable
         override fun BuildUI(
-            onButtonClick: () -> Unit,
+            data: List<CheckList>,
+            searchText: String,
+            onSearchTextChanged: (String) -> Unit,
+            onCancelClick: () -> Unit,
         ) {
-            Text(text = "Home loading...")
         }
     }
 
     object Content : HomeScreenState() {
         @Composable
         override fun BuildUI(
-            onButtonClick: () -> Unit,
+            data: List<CheckList>,
+            searchText: String,
+            onSearchTextChanged: (String) -> Unit,
+            onCancelClick: () -> Unit,
         ) {
-            Text(text = "Home content.")
-            TextButton(onClick = onButtonClick) {
-                Text("Go to List screen")
-            }
+            HomeContent(
+                data = data,
+                searchText = searchText,
+                onSearchTextChanged = onSearchTextChanged,
+                onCancelClick = onCancelClick)
         }
     }
 
     object Error : HomeScreenState() {
         @Composable
         override fun BuildUI(
-            onButtonClick: () -> Unit,
+            data: List<CheckList>,
+            searchText: String,
+            onSearchTextChanged: (String) -> Unit,
+            onCancelClick: () -> Unit,
         ) {
-            Text(text = "Home error!")
         }
     }
 }
