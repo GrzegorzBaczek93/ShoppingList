@@ -32,7 +32,7 @@ private val dimens = object {
 @Composable
 fun Card(
     modifier: Modifier = Modifier,
-    onClick: (String) -> Unit = {},
+    onClick: (Int) -> Unit = {},
     item: CheckList,
 ) {
     Surface(
@@ -85,7 +85,7 @@ private fun CardPreviewWithItems() {
         .background(replyLightPrimaryContainer)
         .padding(16.dp)) {
         Card(item = CheckList(
-            id = "0",
+            id = 0,
             title = "Jabłecznik",
             items = listOf(
                 CheckListItem("Jabłka"),
@@ -105,7 +105,7 @@ private fun CardPreviewWithoutItems() {
         .background(replyLightPrimaryContainer)
         .padding(16.dp)) {
         Card(item = CheckList(
-            id = "0",
+            id = 0,
             title = "Jabłecznik",
             items = emptyList(),
         ))

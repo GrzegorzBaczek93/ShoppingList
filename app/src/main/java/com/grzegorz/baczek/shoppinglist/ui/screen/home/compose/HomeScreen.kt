@@ -58,7 +58,7 @@ private fun HomeScreen(
     onSearchTextChanged: (String) -> Unit,
     onAddClick: () -> Unit,
     onCancelClick: () -> Unit,
-    onCardClick: (String) -> Unit,
+    onCardClick: (Int) -> Unit,
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
     val localFocusManager = LocalFocusManager.current
@@ -94,7 +94,7 @@ private fun HomeScreen(
 }
 
 @Composable
-private fun HomeScreenContent(data: List<CheckList>, onCardClick: (String) -> Unit) {
+private fun HomeScreenContent(data: List<CheckList>, onCardClick: (Int) -> Unit) {
     LazyColumn(
         modifier = Modifier
             .wrapContentHeight()
