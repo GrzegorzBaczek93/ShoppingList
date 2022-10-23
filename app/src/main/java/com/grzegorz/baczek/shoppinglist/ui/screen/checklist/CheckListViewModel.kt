@@ -10,7 +10,7 @@ class CheckListViewModel(
     private val navigationHandler: NavigationHandler,
 ) : BaseViewModel<CheckListArguments>() {
 
-    var viewState by mutableStateOf<CheckListScreenState>(CheckListScreenState.Content)
+    var viewState by mutableStateOf<CheckListScreenState>(CheckListScreenState.Preview)
         private set
 
     fun onBackButtonClick() {
