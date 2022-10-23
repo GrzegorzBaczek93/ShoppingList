@@ -20,6 +20,14 @@ class CheckListViewModel(
         navigationHandler.pop()
     }
 
+    fun onSwitchModeClick() {
+        when (viewState) {
+            CheckListScreenState.Edit -> viewState = CheckListScreenState.Preview
+            CheckListScreenState.Preview -> viewState = CheckListScreenState.Edit
+            else -> {}
+        }
+    }
+
     fun onShareButtonClick() {
 
     }
