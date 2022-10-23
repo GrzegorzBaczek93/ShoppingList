@@ -16,15 +16,29 @@ fun CheckListScreen(arguments: CheckListArguments) {
     val viewModel = getViewModel<CheckListViewModel>()
     viewModel.setArguments(arguments)
 
+    CheckListScreen(
+        onBackButtonClick = viewModel::onBackButtonClick,
+        onShareButtonClick = viewModel::onShareButtonClick,
+        onRemoveButtonClick = viewModel::onRemoveButtonClick,
+    )
+}
+
+@Composable
+private fun CheckListScreen(
+    onBackButtonClick: () -> Unit,
+    onShareButtonClick: () -> Unit,
+    onRemoveButtonClick: () -> Unit,
+) {
     Column(modifier = Modifier.fillMaxSize()) {
         AppBar(
+            title = "",
             startContainer = {
-                AppBarButton(onClick = viewModel::onBackButtonClick, imageDrawable = R.drawable.ic_arrow_back)
+                AppBarButton(onClick = onBackButtonClick, imageDrawable = R.drawable.ic_arrow_back)
             },
             endContainer = {
-                AppBarButton(onClick = viewModel::onShareButtonClick, imageDrawable = R.drawable.ic_share)
-                AppBarButton(onClick = viewModel::onRemoveButtonClick, imageDrawable = R.drawable.ic_delete)
-            }
+                AppBarButton(onClick = onShareButtonClick, imageDrawable = R.drawable.ic_share)
+                AppBarButton(onClick = onRemoveButtonClick, imageDrawable = R.drawable.ic_delete)
+            },
         )
     }
 }
