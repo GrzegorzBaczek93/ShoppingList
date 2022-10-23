@@ -10,17 +10,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.grzegorz.baczek.shoppinglist.R
@@ -38,13 +45,16 @@ private val contentDescription = object {
     val trailingIcon = "Remove search text icon"
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun SearchBar(
     text: String,
     onTextChanged: (String) -> Unit,
     onCancelClick: () -> Unit,
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val localFocusManager = LocalFocusManager.current
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -61,7 +71,7 @@ fun SearchBar(
             imageVector = ImageVector.vectorResource(id = R.drawable.ic_search),
             contentDescription = contentDescription.leadingIcon,
             contentScale = ContentScale.Fit,
-            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
+            colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer),
         )
         CustomTextField(
             modifier = Modifier
@@ -80,8 +90,19 @@ fun SearchBar(
                         .fillMaxWidth()
                         .wrapContentHeight(),
                     style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Search
+            ),
+            keyboardActions = KeyboardActions(
+                onSearch = {
+                    keyboardController?.hide()
+                    localFocusManager.clearFocus(true)
+                }
+            ),
         )
         if (text.isNotBlank()) {
             Image(
@@ -93,7 +114,7 @@ fun SearchBar(
                 imageVector = ImageVector.vectorResource(id = R.drawable.ic_cancel),
                 contentDescription = contentDescription.trailingIcon,
                 contentScale = ContentScale.Fit,
-                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.primary),
+                colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer),
             )
         }
     }

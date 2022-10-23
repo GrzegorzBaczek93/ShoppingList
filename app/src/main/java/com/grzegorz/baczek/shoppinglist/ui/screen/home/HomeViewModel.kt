@@ -3,183 +3,46 @@ package com.grzegorz.baczek.shoppinglist.ui.screen.home
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import com.grzegorz.baczek.shoppinglist.model.CheckList
-import com.grzegorz.baczek.shoppinglist.model.CheckListItem
+import androidx.lifecycle.viewModelScope
 import com.grzegorz.baczek.shoppinglist.navigation.NavigationHandler
+import com.grzegorz.baczek.shoppinglist.navigation.Screen
+import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
+import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
 import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class HomeViewModel(
     private val navigationHandler: NavigationHandler,
+    private val repositoryService: IRepositoryService,
 ) : BaseViewModel<HomeArguments>() {
 
-    var state by mutableStateOf<HomeScreenState>(HomeScreenState.Content)
+    var state by mutableStateOf<HomeScreenState>(HomeScreenState.Empty)
         private set
 
     var searchText by mutableStateOf("")
         private set
 
-    var data by mutableStateOf<List<CheckList>>(emptyList())
-        private set
-
     override fun onArgumentsObtained(args: HomeArguments) {
         super.onArgumentsObtained(args)
-        setMocks()
+        observeData()
+    }
+
+    private fun observeData() {
+        repositoryService.getCheckLists().onEach { data ->
+            state = if (data.isEmpty()) HomeScreenState.Empty else HomeScreenState.Content(data)
+        }.launchIn(viewModelScope)
     }
 
     fun onSearchTextChanged(text: String) {
         searchText = text
     }
 
-    fun onCancelClick() {
-        searchText = ""
+    fun onAddClick() {
+        navigationHandler.navigateTo(Screen.CheckList(CheckListArguments()))
     }
 
-    private fun setMocks() {
-        data = listOf(
-            CheckList(
-                id = "0",
-                title = "Check List",
-                items = listOf(
-                    CheckListItem(
-                        "First item"
-                    ),
-                    CheckListItem(
-                        "Second item"
-                    ),
-                    CheckListItem(
-                        "Third item"
-                    ),
-                    CheckListItem(
-                        "Fourth item"
-                    )
-                )
-            ),
-            CheckList(
-                id = "0",
-                title = "Check List",
-                items = listOf(
-                    CheckListItem(
-                        "First item"
-                    ),
-                    CheckListItem(
-                        "Second item"
-                    ),
-                    CheckListItem(
-                        "Third item"
-                    ),
-                    CheckListItem(
-                        "Fourth item"
-                    )
-                )
-            ),
-            CheckList(
-                id = "0",
-                title = "Check List",
-                items = listOf(
-                    CheckListItem(
-                        "First item"
-                    ),
-                    CheckListItem(
-                        "Second item"
-                    ),
-                    CheckListItem(
-                        "Third item"
-                    ),
-                    CheckListItem(
-                        "Fourth item"
-                    )
-                )
-            ),
-            CheckList(
-                id = "0",
-                title = "Check List",
-                items = listOf(
-                    CheckListItem(
-                        "First item"
-                    ),
-                    CheckListItem(
-                        "Second item"
-                    ),
-                    CheckListItem(
-                        "Third item"
-                    ),
-                    CheckListItem(
-                        "Fourth item"
-                    )
-                )
-            ),
-            CheckList(
-                id = "0",
-                title = "Check List",
-                items = listOf(
-                    CheckListItem(
-                        "First item"
-                    ),
-                    CheckListItem(
-                        "Second item"
-                    ),
-                    CheckListItem(
-                        "Third item"
-                    ),
-                    CheckListItem(
-                        "Fourth item"
-                    )
-                )
-            ),
-            CheckList(
-                id = "0",
-                title = "Check List",
-                items = listOf(
-                    CheckListItem(
-                        "First item"
-                    ),
-                    CheckListItem(
-                        "Second item"
-                    ),
-                    CheckListItem(
-                        "Third item"
-                    ),
-                    CheckListItem(
-                        "Fourth item"
-                    )
-                )
-            ),
-            CheckList(
-                id = "0",
-                title = "Check List",
-                items = listOf(
-                    CheckListItem(
-                        "First item"
-                    ),
-                    CheckListItem(
-                        "Second item"
-                    ),
-                    CheckListItem(
-                        "Third item"
-                    ),
-                    CheckListItem(
-                        "Fourth item"
-                    )
-                )
-            ),
-            CheckList(
-                id = "0",
-                title = "Check List",
-                items = listOf(
-                    CheckListItem(
-                        "First item"
-                    ),
-                    CheckListItem(
-                        "Second item"
-                    ),
-                    CheckListItem(
-                        "Third item"
-                    ),
-                    CheckListItem(
-                        "Fourth item"
-                    )
-                )
-            )
-        )
+    fun onCancelClick() {
+        searchText = ""
     }
 }

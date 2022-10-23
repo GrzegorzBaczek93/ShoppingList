@@ -1,6 +1,7 @@
 package com.grzegorz.baczek.shoppinglist
 
 import android.app.Application
+import com.grzegorz.baczek.shoppinglist.di.serviceModule
 import com.grzegorz.baczek.shoppinglist.di.utilsModule
 import com.grzegorz.baczek.shoppinglist.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -18,7 +19,7 @@ class ShoppingListApp : Application() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@ShoppingListApp)
-            modules(viewModelModule, utilsModule)
+            modules(viewModelModule, serviceModule, utilsModule)
         }
     }
 }

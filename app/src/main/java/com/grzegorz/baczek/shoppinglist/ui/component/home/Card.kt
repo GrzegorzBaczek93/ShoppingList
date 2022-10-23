@@ -56,7 +56,7 @@ private fun Title(text: String) {
         modifier = Modifier.wrapContentSize(),
         text = text,
         style = MaterialTheme.typography.titleMedium,
-        color = MaterialTheme.colorScheme.secondary,
+        color = MaterialTheme.colorScheme.onPrimaryContainer,
     )
 }
 
@@ -66,7 +66,7 @@ private fun SingleItem(text: String) {
         modifier = Modifier.wrapContentSize(),
         text = text,
         style = MaterialTheme.typography.bodyMedium,
-        color = MaterialTheme.colorScheme.secondary,
+        color = MaterialTheme.colorScheme.onPrimaryContainer,
         fontSize = 12.sp,
     )
 }

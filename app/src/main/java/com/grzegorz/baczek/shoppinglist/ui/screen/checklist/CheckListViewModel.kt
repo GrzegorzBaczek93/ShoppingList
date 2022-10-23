@@ -10,10 +10,18 @@ class CheckListViewModel(
     private val navigationHandler: NavigationHandler,
 ) : BaseViewModel<CheckListArguments>() {
 
-    var state by mutableStateOf<CheckListScreenState>(CheckListScreenState.Loading)
+    var viewState by mutableStateOf<CheckListScreenState>(CheckListScreenState.Content)
         private set
 
-    override fun onArgumentsObtained(args: CheckListArguments) {
-        super.onArgumentsObtained(args)
+    fun onBackButtonClick() {
+        navigationHandler.pop()
+    }
+
+    fun onShareButtonClick() {
+
+    }
+
+    fun onRemoveButtonClick() {
+
     }
 }
