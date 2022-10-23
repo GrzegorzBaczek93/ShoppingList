@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CheckListArguments(
-    val id: Int? = null,
+    val id: String? = null,
 ) : BaseArguments

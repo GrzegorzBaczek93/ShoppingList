@@ -45,4 +45,8 @@ class HomeViewModel(
     fun onCancelClick() {
         searchText = ""
     }
+
+    fun onCardClick(id: String) {
+        navigationHandler.navigateTo(Screen.CheckList(CheckListArguments(id = id)))
+    }
 }

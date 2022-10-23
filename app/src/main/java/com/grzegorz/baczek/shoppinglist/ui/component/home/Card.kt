@@ -2,6 +2,7 @@ package com.grzegorz.baczek.shoppinglist.ui.component.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -24,23 +25,27 @@ private const val MAX_ITEMS = 3
 
 private val dimens = object {
     val cardPadding = 2.dp
-    val borderSize = 2.dp
+    val borderSize = 1.dp
     val contentPadding = 12.dp
 }
 
 @Composable
 fun Card(
     modifier: Modifier = Modifier,
+    onClick: (String) -> Unit = {},
     item: CheckList,
 ) {
     Surface(
         modifier = modifier
             .padding(dimens.cardPadding)
             .wrapContentHeight()
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable {
+                onClick(item.id)
+            },
         shape = MaterialTheme.shapes.medium,
         contentColor = MaterialTheme.colorScheme.primaryContainer,
-        border = BorderStroke(dimens.borderSize, color = MaterialTheme.colorScheme.outline)
+        border = BorderStroke(dimens.borderSize, color = MaterialTheme.colorScheme.outline),
     ) {
         Column(
             modifier = Modifier.padding(dimens.contentPadding),

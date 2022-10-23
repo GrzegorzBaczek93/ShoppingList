@@ -46,6 +46,7 @@ fun HomeScreen(arguments: HomeArguments) {
         onSearchTextChanged = viewModel::onSearchTextChanged,
         onAddClick = viewModel::onAddClick,
         onCancelClick = viewModel::onCancelClick,
+        onCardClick = viewModel::onCardClick,
     )
 }
 
@@ -57,6 +58,7 @@ private fun HomeScreen(
     onSearchTextChanged: (String) -> Unit,
     onAddClick: () -> Unit,
     onCancelClick: () -> Unit,
+    onCardClick: (String) -> Unit,
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
     val localFocusManager = LocalFocusManager.current
@@ -83,7 +85,7 @@ private fun HomeScreen(
         ) {
             SearchBar(text = searchText, onTextChanged = onSearchTextChanged, onCancelClick = onCancelClick)
             when (state) {
-                is HomeScreenState.Content -> HomeScreenContent(state.data)
+                is HomeScreenState.Content -> HomeScreenContent(data = state.data, onCardClick = onCardClick)
                 HomeScreenState.Empty -> HomeScreenEmpty()
                 HomeScreenState.NotFound -> HomeScreenNotFound()
             }
@@ -92,7 +94,7 @@ private fun HomeScreen(
 }
 
 @Composable
-private fun HomeScreenContent(data: List<CheckList>) {
+private fun HomeScreenContent(data: List<CheckList>, onCardClick: (String) -> Unit) {
     LazyColumn(
         modifier = Modifier
             .wrapContentHeight()
@@ -101,7 +103,7 @@ private fun HomeScreenContent(data: List<CheckList>) {
         contentPadding = PaddingValues(vertical = dimens.listPaddingTop),
     ) {
         items(data) { singleItem ->
-            Card(item = singleItem)
+            Card(item = singleItem, onClick = onCardClick)
         }
     }
 }
