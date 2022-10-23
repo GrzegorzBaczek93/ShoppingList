@@ -15,6 +15,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -31,7 +34,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.grzegorz.baczek.shoppinglist.R
-import com.grzegorz.baczek.shoppinglist.utils.compose.CustomTextField
 
 private val dimens = object {
     val height = 56.dp
@@ -73,7 +75,7 @@ fun SearchBar(
             contentScale = ContentScale.Fit,
             colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer),
         )
-        CustomTextField(
+        TextField(
             modifier = Modifier
                 .align(Alignment.Center)
                 .fillMaxWidth()
@@ -102,6 +104,11 @@ fun SearchBar(
                     keyboardController?.hide()
                     localFocusManager.clearFocus(true)
                 }
+            ),
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                unfocusedIndicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                focusedIndicatorColor = MaterialTheme.colorScheme.primaryContainer,
             ),
         )
         if (text.isNotBlank()) {
