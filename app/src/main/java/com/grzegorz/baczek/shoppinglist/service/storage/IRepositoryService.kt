@@ -8,6 +8,8 @@ interface IRepositoryService: Service {
 
     fun getCheckLists(): StateFlow<List<CheckList>>
 
+    fun getCheckList(id: Int): CheckList
+
     fun addCheckList(checkList: CheckList)
 
     fun removeCheckList(checkList: CheckList)
