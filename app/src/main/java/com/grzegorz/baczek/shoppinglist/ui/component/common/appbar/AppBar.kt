@@ -1,4 +1,4 @@
-package com.grzegorz.baczek.shoppinglist.ui.component.common
+package com.grzegorz.baczek.shoppinglist.ui.component.common.appbar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -53,12 +53,12 @@ fun AppBar(
         }
         Text(
             modifier = Modifier.constrainAs(titleContainer) {
-                    start.linkTo(startContainerRef.end)
-                    end.linkTo(endContainerRef.start)
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                    width = Dimension.fillToConstraints
-                },
+                start.linkTo(startContainerRef.end)
+                end.linkTo(endContainerRef.start)
+                top.linkTo(parent.top)
+                bottom.linkTo(parent.bottom)
+                width = Dimension.fillToConstraints
+            },
             text = title,
             style = MaterialTheme.typography.titleLarge,
             color = MaterialTheme.colorScheme.onSurface,
@@ -82,7 +82,7 @@ fun AppBar(
 private fun SearchBarCenterPreview() {
     AppBar(
         title = "Very long title with even longer text",
-        endContainer = { AppBarButton(onClick = {}, imageDrawable = R.drawable.ic_delete) },
+        endContainer = { AppBarImageButton(onClick = {}, imageDrawable = R.drawable.ic_remove) },
     )
 }
 
@@ -91,7 +91,7 @@ private fun SearchBarCenterPreview() {
 private fun SearchBarStartPreview() {
     AppBar(
         title = "Very long title with even longer text",
-        startContainer = { AppBarButton(onClick = {}, imageDrawable = R.drawable.ic_arrow_back) },
-        endContainer = { AppBarButton(onClick = {}, imageDrawable = R.drawable.ic_delete) },
+        startContainer = { AppBarImageButton(onClick = {}, imageDrawable = R.drawable.ic_arrow_back) },
+        endContainer = { AppBarImageButton(onClick = {}, imageDrawable = R.drawable.ic_remove) },
     )
 }

@@ -4,4 +4,8 @@
 
     <!--  Search  -->
     <string name="search_placeholder">Szukaj listy</string>
+
+    <!--  AppBar  -->
+    <string name="share_label">Udostępnij</string>
+    <string name="remove_label">Usuń</string>
 </resources>

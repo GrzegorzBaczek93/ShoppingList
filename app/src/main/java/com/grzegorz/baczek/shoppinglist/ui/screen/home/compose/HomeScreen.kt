@@ -19,8 +19,8 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import com.grzegorz.baczek.shoppinglist.R
 import com.grzegorz.baczek.shoppinglist.model.CheckList
-import com.grzegorz.baczek.shoppinglist.ui.component.common.AppBar
-import com.grzegorz.baczek.shoppinglist.ui.component.common.AppBarButton
+import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBar
+import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBarImageButton
 import com.grzegorz.baczek.shoppinglist.ui.component.home.Card
 import com.grzegorz.baczek.shoppinglist.ui.component.home.SearchBar
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
@@ -75,7 +75,7 @@ private fun HomeScreen(
     ) {
         AppBar(
             endContainer = {
-                AppBarButton(onClick = onAddClick, imageDrawable = R.drawable.ic_add)
+                AppBarImageButton(onClick = onAddClick, imageDrawable = R.drawable.ic_add)
             },
         )
         Column(

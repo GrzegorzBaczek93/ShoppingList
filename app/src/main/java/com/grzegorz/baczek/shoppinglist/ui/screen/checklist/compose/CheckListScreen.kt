@@ -4,9 +4,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import com.grzegorz.baczek.shoppinglist.R
-import com.grzegorz.baczek.shoppinglist.ui.component.common.AppBar
-import com.grzegorz.baczek.shoppinglist.ui.component.common.AppBarButton
+import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBar
+import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBarDropdownMenu
+import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBarDropdownMenuItem
+import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBarImageButton
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenState
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListViewModel
@@ -39,18 +42,28 @@ private fun CheckListScreen(
         AppBar(
             title = "",
             startContainer = {
-                AppBarButton(onClick = onBackButtonClick, imageDrawable = R.drawable.ic_arrow_back)
+                AppBarImageButton(onClick = onBackButtonClick, imageDrawable = R.drawable.ic_arrow_back)
             },
             endContainer = {
                 when (viewState) {
-                    is CheckListScreenState.Edit -> AppBarButton(onClick = onSwitchModeClick,
+                    is CheckListScreenState.Edit -> AppBarImageButton(onClick = onSwitchModeClick,
                         imageDrawable = R.drawable.ic_save)
-                    is CheckListScreenState.Preview -> AppBarButton(onClick = onSwitchModeClick,
+                    is CheckListScreenState.Preview -> AppBarImageButton(onClick = onSwitchModeClick,
                         imageDrawable = R.drawable.ic_edit_note)
                     else -> {}
                 }
-                AppBarButton(onClick = onShareButtonClick, imageDrawable = R.drawable.ic_share)
-                AppBarButton(onClick = onRemoveButtonClick, imageDrawable = R.drawable.ic_delete)
+                AppBarDropdownMenu(
+                    AppBarDropdownMenuItem(
+                        text = stringResource(R.string.share_label),
+                        drawable = R.drawable.ic_share,
+                        onClick = onShareButtonClick,
+                    ),
+                    AppBarDropdownMenuItem(
+                        text = stringResource(R.string.remove_label),
+                        drawable = R.drawable.ic_remove,
+                        onClick = onRemoveButtonClick,
+                    ),
+                )
             },
         )
         when (viewState) {

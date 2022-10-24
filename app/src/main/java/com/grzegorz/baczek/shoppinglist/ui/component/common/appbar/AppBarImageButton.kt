@@ -1,4 +1,4 @@
-package com.grzegorz.baczek.shoppinglist.ui.component.common
+package com.grzegorz.baczek.shoppinglist.ui.component.common.appbar
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
@@ -27,7 +27,7 @@ private val contentDescription = object {
 }
 
 @Composable
-fun AppBarButton(
+fun AppBarImageButton(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
     @DrawableRes imageDrawable: Int,
@@ -51,7 +51,7 @@ fun AppBarButton(
 @Preview
 @Composable
 private fun AppBarButtonPreview() {
-    AppBarButton(
+    AppBarImageButton(
         onClick = {},
         imageDrawable = R.drawable.ic_arrow_back,
     )
