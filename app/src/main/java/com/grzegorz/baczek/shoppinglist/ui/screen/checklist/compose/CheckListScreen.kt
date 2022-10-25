@@ -71,19 +71,9 @@ private fun CheckListScreen(
             ),
         )
         when (viewState) {
-            CheckListScreenState.Edit -> CheckListEditContentScreen()
-            CheckListScreenState.Preview -> CheckListPreviewContentScreen()
+            CheckListScreenState.Edit -> CheckListEditContent()
+            CheckListScreenState.Preview -> CheckListPreviewContent()
             CheckListScreenState.Loading -> {}
         }
     }
-}
-
-@Composable
-private fun CheckListEditContentScreen() {
-    Todo("CheckListEditContentScreen")
-}
-
-@Composable
-private fun CheckListPreviewContentScreen() {
-    Todo("CheckListPreviewContentScreen")
 }
