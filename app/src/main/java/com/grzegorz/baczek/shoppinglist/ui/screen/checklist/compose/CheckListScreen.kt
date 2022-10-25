@@ -6,10 +6,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.grzegorz.baczek.shoppinglist.R
+import com.grzegorz.baczek.shoppinglist.model.AppBarMenuItem
 import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBar
-import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBarDropdownMenu
-import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBarDropdownMenuItem
-import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBarImageButton
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenState
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListViewModel
@@ -41,30 +39,36 @@ private fun CheckListScreen(
     Column(modifier = Modifier.fillMaxSize()) {
         AppBar(
             title = "",
-            startContainer = {
-                AppBarImageButton(onClick = onBackButtonClick, imageDrawable = R.drawable.ic_arrow_back)
-            },
-            endContainer = {
+            startButton = AppBarMenuItem(
+                text = stringResource(id = R.string.back_label),
+                drawable = R.drawable.ic_arrow_back,
+                onClick = onBackButtonClick,
+            ),
+            endButtons = listOfNotNull(
                 when (viewState) {
-                    is CheckListScreenState.Edit -> AppBarImageButton(onClick = onSwitchModeClick,
-                        imageDrawable = R.drawable.ic_save)
-                    is CheckListScreenState.Preview -> AppBarImageButton(onClick = onSwitchModeClick,
-                        imageDrawable = R.drawable.ic_edit_note)
-                    else -> {}
-                }
-                AppBarDropdownMenu(
-                    AppBarDropdownMenuItem(
-                        text = stringResource(R.string.share_label),
-                        drawable = R.drawable.ic_share,
-                        onClick = onShareButtonClick,
-                    ),
-                    AppBarDropdownMenuItem(
-                        text = stringResource(R.string.remove_label),
-                        drawable = R.drawable.ic_remove,
-                        onClick = onRemoveButtonClick,
-                    ),
-                )
-            },
+                    is CheckListScreenState.Edit -> AppBarMenuItem(
+                        text = stringResource(R.string.save_label),
+                        drawable = R.drawable.ic_save,
+                        onClick = onSwitchModeClick,
+                    )
+                    is CheckListScreenState.Preview -> AppBarMenuItem(
+                        text = stringResource(R.string.preview_label),
+                        drawable = R.drawable.ic_edit_note,
+                        onClick = onSwitchModeClick,
+                    )
+                    else -> null
+                },
+                AppBarMenuItem(
+                    text = stringResource(R.string.share_label),
+                    drawable = R.drawable.ic_share,
+                    onClick = onShareButtonClick,
+                ),
+                AppBarMenuItem(
+                    text = stringResource(R.string.remove_label),
+                    drawable = R.drawable.ic_remove,
+                    onClick = onRemoveButtonClick,
+                ),
+            ),
         )
         when (viewState) {
             CheckListScreenState.Edit -> CheckListEditContentScreen()

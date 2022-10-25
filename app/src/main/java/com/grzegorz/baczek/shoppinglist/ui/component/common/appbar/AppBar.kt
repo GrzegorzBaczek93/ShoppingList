@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.grzegorz.baczek.shoppinglist.R
+import com.grzegorz.baczek.shoppinglist.model.AppBarMenuItem
 
 private val dimens = object {
     val height = 64.dp
@@ -25,12 +26,16 @@ private val dimens = object {
     val startContainerMinWidth = 12.dp
 }
 
+private val consts = object {
+    val maxSingleItems = 2
+}
+
 @Composable
 fun AppBar(
     modifier: Modifier = Modifier,
     title: String = stringResource(id = R.string.app_name),
-    startContainer: @Composable () -> Unit = {},
-    endContainer: @Composable () -> Unit = {},
+    startButton: AppBarMenuItem = AppBarMenuItem.none,
+    endButtons: List<AppBarMenuItem> = emptyList(),
 ) {
     ConstraintLayout(
         modifier = modifier
@@ -49,7 +54,7 @@ fun AppBar(
                     bottom.linkTo(parent.bottom)
                 },
         ) {
-            startContainer()
+            StartContainer(startButton)
         }
         Text(
             modifier = Modifier.constrainAs(titleContainer) {
@@ -72,26 +77,39 @@ fun AppBar(
                 bottom.linkTo(parent.bottom)
             },
         ) {
-            endContainer()
+            EndContainer(endButtons)
+        }
+    }
+}
+
+@Composable
+private fun StartContainer(startButton: AppBarMenuItem) {
+    if (startButton != AppBarMenuItem.none) {
+        AppBarImageButton(onClick = startButton.onClick, imageDrawable = startButton.drawable)
+    }
+}
+
+@Composable
+private fun EndContainer(endButtons: List<AppBarMenuItem>) {
+    if (endButtons.size > consts.maxSingleItems) {
+        AppBarImageButton(onClick = endButtons.first().onClick, imageDrawable = endButtons.first().drawable)
+        AppBarDropdownMenu(items = endButtons.drop(1))
+    } else {
+        endButtons.forEach {
+            AppBarImageButton(onClick = it.onClick, imageDrawable = it.drawable)
         }
     }
 }
 
 @Preview
 @Composable
-private fun SearchBarCenterPreview() {
+private fun SearchBarPreview() {
     AppBar(
         title = "Very long title with even longer text",
-        endContainer = { AppBarImageButton(onClick = {}, imageDrawable = R.drawable.ic_remove) },
-    )
-}
-
-@Preview
-@Composable
-private fun SearchBarStartPreview() {
-    AppBar(
-        title = "Very long title with even longer text",
-        startContainer = { AppBarImageButton(onClick = {}, imageDrawable = R.drawable.ic_arrow_back) },
-        endContainer = { AppBarImageButton(onClick = {}, imageDrawable = R.drawable.ic_remove) },
+        startButton = AppBarMenuItem(
+            text = stringResource(id = R.string.back_label),
+            drawable = R.drawable.ic_arrow_back,
+            onClick = {},
+        ),
     )
 }

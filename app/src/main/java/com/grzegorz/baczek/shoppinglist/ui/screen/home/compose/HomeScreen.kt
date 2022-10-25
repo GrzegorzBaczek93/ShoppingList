@@ -16,11 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.grzegorz.baczek.shoppinglist.R
+import com.grzegorz.baczek.shoppinglist.model.AppBarMenuItem
 import com.grzegorz.baczek.shoppinglist.model.CheckList
 import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBar
-import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBarImageButton
 import com.grzegorz.baczek.shoppinglist.ui.component.home.Card
 import com.grzegorz.baczek.shoppinglist.ui.component.home.SearchBar
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
@@ -74,9 +75,13 @@ private fun HomeScreen(
             },
     ) {
         AppBar(
-            endContainer = {
-                AppBarImageButton(onClick = onAddClick, imageDrawable = R.drawable.ic_add)
-            },
+            endButtons = listOf(
+                AppBarMenuItem(
+                    text = stringResource(id = R.string.add_label),
+                    drawable = R.drawable.ic_add,
+                    onClick = onAddClick,
+                ),
+            ),
         )
         Column(
             modifier = Modifier

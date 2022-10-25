@@ -22,29 +22,27 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.grzegorz.baczek.shoppinglist.R
+import com.grzegorz.baczek.shoppinglist.model.AppBarMenuItem
 
 private val dimens = object {
     val iconBoxSize = 48.dp
     val iconSize = 24.dp
     val menuMinWidth = 160.dp
     val menuMaxWidth = 280.dp
+    val menuPaddingStart = 12.dp
+    val menuPaddingTop = 0.dp
 }
 
 private val contentDescription = object {
     val button = "Button"
 }
 
-data class AppBarDropdownMenuItem(
-    val text: String,
-    @DrawableRes val drawable: Int,
-    val onClick: () -> Unit,
-)
-
 @Composable
 fun AppBarDropdownMenu(
-    vararg items: AppBarDropdownMenuItem,
+    items: List<AppBarMenuItem>,
 ) {
     var expanded by remember { mutableStateOf(false) }
 
@@ -66,6 +64,7 @@ fun AppBarDropdownMenu(
         DropdownMenu(
             modifier = Modifier.widthIn(dimens.menuMinWidth, dimens.menuMaxWidth),
             expanded = expanded,
+            offset = DpOffset(dimens.menuPaddingStart, dimens.menuPaddingTop),
             onDismissRequest = { expanded = false },
         ) {
             items.forEach { (text, drawable, onClick) ->
