@@ -5,5 +5,5 @@ import com.grzegorz.baczek.shoppinglist.utils.compose.Todo
 
 @Composable
 fun HomeScreenEmpty() {
-    Todo()
+    Todo("HomeScreenEmpty")
 }

@@ -32,7 +32,6 @@ fun HomeScreen(arguments: HomeArguments) {
 
     HomeScreen(
         state = viewModel.state,
-        searchText = viewModel.searchText,
         onSearchTextChanged = viewModel::onSearchTextChanged,
         onAddClick = viewModel::onAddClick,
         onCancelClick = viewModel::onCancelClick,
@@ -44,7 +43,6 @@ fun HomeScreen(arguments: HomeArguments) {
 @Composable
 private fun HomeScreen(
     state: HomeScreenState,
-    searchText: String,
     onSearchTextChanged: (String) -> Unit,
     onAddClick: () -> Unit,
     onCancelClick: () -> Unit,
@@ -79,11 +77,11 @@ private fun HomeScreen(
                 .padding(top = dimens.contentPadding)
                 .padding(horizontal = dimens.contentPadding),
         ) {
-            SearchBar(text = searchText, onTextChanged = onSearchTextChanged, onCancelClick = onCancelClick)
+            SearchBar(text = state.searchText, onTextChanged = onSearchTextChanged, onCancelClick = onCancelClick)
             when (state) {
                 is HomeScreenState.Content -> HomeScreenContent(data = state.data, onCardClick = onCardClick)
-                HomeScreenState.Empty -> HomeScreenEmpty()
-                HomeScreenState.NotFound -> HomeScreenNotFound()
+                is HomeScreenState.Empty -> HomeScreenEmpty()
+                is HomeScreenState.NotFound -> HomeScreenNotFound()
             }
         }
     }
