@@ -13,6 +13,13 @@ class RepositoryService : IRepositoryService {
     )
     private val lists by _lists
 
+    init {
+        lists.add(CheckList.mock(0, 1))
+        lists.add(CheckList.mock(1, 2))
+        lists.add(CheckList.mock(2, 3))
+        lists.add(CheckList.mock(3, 4))
+    }
+
     override fun getCheckLists(): StateFlow<List<CheckList>> = _lists.flow
 
     override fun getCheckList(id: Int): CheckList = lists.firstOrNull { it.id == id } ?: CheckList.empty

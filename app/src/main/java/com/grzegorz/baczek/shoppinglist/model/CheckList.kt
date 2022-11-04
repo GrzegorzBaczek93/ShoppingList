@@ -11,5 +11,10 @@ data class CheckList(
             title = "",
             items = emptyList()
         )
+        fun mock(id: Int, size: Int) = CheckList(
+            id = id,
+            title = "mocked check list #$id",
+            items = List(size) { CheckListItem.mock }
+        )
     }
 }
