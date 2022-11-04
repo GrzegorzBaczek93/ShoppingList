@@ -13,6 +13,7 @@ import dev.olshevski.navigation.reimagined.NavController
 import dev.olshevski.navigation.reimagined.navController
 import dev.olshevski.navigation.reimagined.navigate
 import dev.olshevski.navigation.reimagined.pop
+import dev.olshevski.navigation.reimagined.popUpTo
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -40,6 +41,7 @@ class NavigationViewModel(
     private fun handleAction(action: NavigationAction) {
         when (action) {
             is NavigationAction.NavigateTo -> navController.navigate(action.screen)
+            is NavigationAction.PopTo -> navController.popUpTo { it == action.screen }
             NavigationAction.Pop -> navController.pop()
             NavigationAction.None -> {}
         }
