@@ -26,6 +26,7 @@ private val dimens = object {
     val cardPadding = 2.dp
     val borderSize = 1.dp
     val contentPadding = 12.dp
+    val itemFontSize = 12.sp
 }
 
 @Composable
@@ -72,7 +73,7 @@ private fun SingleItem(text: String) {
         text = text,
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onPrimaryContainer,
-        fontSize = 12.sp,
+        fontSize = dimens.itemFontSize,
     )
 }
 

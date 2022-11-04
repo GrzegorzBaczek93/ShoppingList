@@ -22,6 +22,7 @@ import com.grzegorz.baczek.shoppinglist.utils.compose.noRippleClickable
 
 private val dimens = object {
     val iconSize = 24.dp
+    val spaceSize = 1.dp
 }
 
 private val contentDescription = object {
@@ -36,7 +37,7 @@ fun CheckListPreviewContent(
 ) {
     Column(
         modifier = Modifier.background(MaterialTheme.colorScheme.surfaceVariant),
-        verticalArrangement = Arrangement.spacedBy(1.dp),
+        verticalArrangement = Arrangement.spacedBy(dimens.spaceSize),
     ) {
         items.forEach { singleItem ->
             val (id, text, checked) = singleItem
