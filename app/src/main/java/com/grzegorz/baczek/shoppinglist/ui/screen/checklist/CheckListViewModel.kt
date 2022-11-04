@@ -28,11 +28,12 @@ class CheckListViewModel(
         }
     }
 
-    fun onShareButtonClick() {
+    fun onRenewClick() {
+    }
 
+    fun onShareButtonClick() {
     }
 
     fun onRemoveButtonClick() {
-
     }
 }

@@ -80,34 +80,42 @@ private fun SingleItem(text: String) {
 @Preview(locale = "en")
 @Composable
 private fun CardPreviewWithItems() {
-    Box(modifier = Modifier
-        .wrapContentSize()
-        .background(replyLightPrimaryContainer)
-        .padding(16.dp)) {
-        Card(item = CheckList(
-            id = 0,
-            title = "Jabłecznik",
-            items = listOf(
-                CheckListItem("Jabłka"),
-                CheckListItem("Jabłka"),
-                CheckListItem("Jabłka"),
-                CheckListItem("Jabłka"),
-            ),
-        ))
+    Box(
+        modifier = Modifier
+            .wrapContentSize()
+            .background(replyLightPrimaryContainer)
+            .padding(16.dp)
+    ) {
+        Card(
+            item = CheckList(
+                id = 0,
+                title = "Jabłecznik",
+                items = listOf(
+                    CheckListItem("Jabłka"),
+                    CheckListItem("Jabłka"),
+                    CheckListItem("Jabłka"),
+                    CheckListItem("Jabłka"),
+                ),
+            )
+        )
     }
 }
 
 @Preview(locale = "pl")
 @Composable
 private fun CardPreviewWithoutItems() {
-    Box(modifier = Modifier
-        .wrapContentSize()
-        .background(replyLightPrimaryContainer)
-        .padding(16.dp)) {
-        Card(item = CheckList(
-            id = 0,
-            title = "Jabłecznik",
-            items = emptyList(),
-        ))
+    Box(
+        modifier = Modifier
+            .wrapContentSize()
+            .background(replyLightPrimaryContainer)
+            .padding(16.dp)
+    ) {
+        Card(
+            item = CheckList(
+                id = 0,
+                title = "Jabłecznik",
+                items = emptyList(),
+            )
+        )
     }
 }

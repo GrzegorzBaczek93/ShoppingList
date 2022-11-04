@@ -9,6 +9,7 @@
     <string name="add_label">Add</string>
     <string name="save_label">Save</string>
     <string name="preview_label">Preview</string>
+    <string name="renew_label">Renew</string>
     <string name="share_label">Share</string>
     <string name="remove_label">Remove</string>
 </resources>

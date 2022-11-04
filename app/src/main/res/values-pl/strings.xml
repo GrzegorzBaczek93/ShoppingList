@@ -10,6 +10,7 @@
     <string name="add_label">Dodaj</string>
     <string name="save_label">Zapisz</string>
     <string name="preview_label">Podgląd</string>
+    <string name="renew_label">Wyczyść</string>
     <string name="share_label">Udostępnij</string>
     <string name="remove_label">Usuń</string>
 </resources>

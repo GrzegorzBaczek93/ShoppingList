@@ -68,10 +68,12 @@ private fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .pointerInput(null) {
-                detectTapGestures(onTap = {
-                    keyboardController?.hide()
-                    localFocusManager.clearFocus(true)
-                })
+                detectTapGestures(
+                    onTap = {
+                        keyboardController?.hide()
+                        localFocusManager.clearFocus(true)
+                    }
+                )
             },
     ) {
         AppBar(

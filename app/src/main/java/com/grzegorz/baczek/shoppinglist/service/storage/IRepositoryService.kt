@@ -4,7 +4,7 @@ import com.grzegorz.baczek.shoppinglist.model.CheckList
 import com.grzegorz.baczek.shoppinglist.service.Service
 import kotlinx.coroutines.flow.StateFlow
 
-interface IRepositoryService: Service {
+interface IRepositoryService : Service {
 
     fun getCheckLists(): StateFlow<List<CheckList>>
 
