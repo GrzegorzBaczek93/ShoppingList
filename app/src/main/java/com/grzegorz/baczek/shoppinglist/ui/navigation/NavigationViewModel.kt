@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi
 import androidx.lifecycle.viewmodel.compose.saveable
-import com.grzegorz.baczek.shoppinglist.navigation.NavigationAction
-import com.grzegorz.baczek.shoppinglist.navigation.NavigationHandler
-import com.grzegorz.baczek.shoppinglist.navigation.Screen
+import com.grzegorz.baczek.shoppinglist.navigation.action.NavigationAction
+import com.grzegorz.baczek.shoppinglist.navigation.action.NavigationHandler
+import com.grzegorz.baczek.shoppinglist.navigation.destination.Screen
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
 import dev.olshevski.navigation.reimagined.NavController
 import dev.olshevski.navigation.reimagined.navController

@@ -1,5 +1,6 @@
-package com.grzegorz.baczek.shoppinglist.navigation
+package com.grzegorz.baczek.shoppinglist.navigation.action
 
+import com.grzegorz.baczek.shoppinglist.navigation.destination.Screen
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 

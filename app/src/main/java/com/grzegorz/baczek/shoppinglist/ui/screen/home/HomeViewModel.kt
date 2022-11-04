@@ -4,8 +4,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
-import com.grzegorz.baczek.shoppinglist.navigation.NavigationHandler
-import com.grzegorz.baczek.shoppinglist.navigation.Screen
+import com.grzegorz.baczek.shoppinglist.navigation.action.NavigationHandler
+import com.grzegorz.baczek.shoppinglist.navigation.destination.Screen
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
 import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel

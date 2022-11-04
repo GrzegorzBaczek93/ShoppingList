@@ -1,6 +1,5 @@
-package com.grzegorz.baczek.shoppinglist.navigation
+package com.grzegorz.baczek.shoppinglist.navigation.destination
 
-import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.compose.CheckListScreen
@@ -11,10 +10,7 @@ import kotlinx.parcelize.Parcelize
 
 sealed class Screen(
     open val arguments: BaseArguments
-) : Parcelable {
-
-    @Composable
-    open fun Content() {}
+) : Destination {
 
     @Parcelize
     data class Home(override val arguments: HomeArguments) : Screen(arguments) {
