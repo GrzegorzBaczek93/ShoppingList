@@ -23,6 +23,7 @@ fun CheckListScreen(arguments: CheckListArguments) {
     CheckListScreen(
         viewState = viewModel.viewState,
         checkList = viewModel.checkList,
+        onPreviewItemClick = viewModel::onPreviewItemClick,
         onBackButtonClick = viewModel::onBackButtonClick,
         onSwitchModeClick = viewModel::onSwitchModeClick,
         onRenewClick = viewModel::onRenewClick,
@@ -35,6 +36,7 @@ fun CheckListScreen(arguments: CheckListArguments) {
 private fun CheckListScreen(
     viewState: CheckListScreenState,
     checkList: CheckList,
+    onPreviewItemClick: (Int) -> Unit,
     onBackButtonClick: () -> Unit,
     onSwitchModeClick: () -> Unit,
     onRenewClick: () -> Unit,
@@ -92,7 +94,7 @@ private fun CheckListScreen(
         )
         when (viewState) {
             CheckListScreenState.Edit -> CheckListEditContent()
-            CheckListScreenState.Preview -> CheckListPreviewContent()
+            CheckListScreenState.Preview -> CheckListPreviewContent(checkList.items, onPreviewItemClick)
             CheckListScreenState.Loading -> {}
         }
     }

@@ -18,7 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.grzegorz.baczek.shoppinglist.model.CheckList
-import com.grzegorz.baczek.shoppinglist.model.CheckListItem
 import com.grzegorz.baczek.shoppinglist.ui.theme.replyLightPrimaryContainer
 
 private const val MAX_ITEMS = 3
@@ -87,16 +86,7 @@ private fun CardPreviewWithItems() {
             .padding(16.dp)
     ) {
         Card(
-            item = CheckList(
-                id = 0,
-                title = "Jabłecznik",
-                items = listOf(
-                    CheckListItem("Jabłka"),
-                    CheckListItem("Jabłka"),
-                    CheckListItem("Jabłka"),
-                    CheckListItem("Jabłka"),
-                ),
-            )
+            item = CheckList.mock(-1, 4)
         )
     }
 }
@@ -111,11 +101,7 @@ private fun CardPreviewWithoutItems() {
             .padding(16.dp)
     ) {
         Card(
-            item = CheckList(
-                id = 0,
-                title = "Jabłecznik",
-                items = emptyList(),
-            )
+            item = CheckList.mock(-1, 0)
         )
     }
 }

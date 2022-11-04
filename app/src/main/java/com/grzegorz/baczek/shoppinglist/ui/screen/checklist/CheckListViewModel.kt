@@ -4,6 +4,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.grzegorz.baczek.shoppinglist.model.CheckList
+import com.grzegorz.baczek.shoppinglist.model.cleared
+import com.grzegorz.baczek.shoppinglist.model.toggled
 import com.grzegorz.baczek.shoppinglist.navigation.action.NavigationHandler
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
 import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
@@ -35,7 +37,12 @@ class CheckListViewModel(
         }
     }
 
+    fun onPreviewItemClick(id: Int) {
+        checkList = checkList.toggled(id)
+    }
+
     fun onRenewClick() {
+        checkList = checkList.cleared()
     }
 
     fun onShareButtonClick() {
