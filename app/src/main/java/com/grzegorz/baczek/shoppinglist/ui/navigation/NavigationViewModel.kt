@@ -7,6 +7,7 @@ import androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi
 import androidx.lifecycle.viewmodel.compose.saveable
 import com.grzegorz.baczek.shoppinglist.navigation.action.NavigationAction
 import com.grzegorz.baczek.shoppinglist.navigation.action.NavigationHandler
+import com.grzegorz.baczek.shoppinglist.navigation.destination.Destination
 import com.grzegorz.baczek.shoppinglist.navigation.destination.Screen
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
 import dev.olshevski.navigation.reimagined.NavController
@@ -23,8 +24,8 @@ class NavigationViewModel(
 ) : ViewModel() {
 
     @OptIn(SavedStateHandleSaveableApi::class)
-    private val navController by savedStateHandle.saveable<NavController<Screen>> {
-        navController<Screen>(startDestination = Screen.Home(HomeArguments()))
+    private val navController by savedStateHandle.saveable<NavController<Destination>> {
+        navController<Destination>(startDestination = Screen.Home(HomeArguments()))
     }
 
     val backStack get() = navController.backstack
@@ -40,8 +41,8 @@ class NavigationViewModel(
 
     private fun handleAction(action: NavigationAction) {
         when (action) {
-            is NavigationAction.NavigateTo -> navController.navigate(action.screen)
-            is NavigationAction.PopTo -> navController.popUpTo { it == action.screen }
+            is NavigationAction.NavigateTo -> navController.navigate(action.destination)
+            is NavigationAction.PopTo -> navController.popUpTo { it == action.destination }
             NavigationAction.Pop -> navController.pop()
             NavigationAction.None -> {}
         }

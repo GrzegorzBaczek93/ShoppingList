@@ -1,15 +1,9 @@
 package com.grzegorz.baczek.shoppinglist.ui.screen.home.compose
 
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -20,14 +14,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.grzegorz.baczek.shoppinglist.R
 import com.grzegorz.baczek.shoppinglist.model.AppBarMenuItem
-import com.grzegorz.baczek.shoppinglist.model.CheckList
 import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBar
-import com.grzegorz.baczek.shoppinglist.ui.component.home.Card
 import com.grzegorz.baczek.shoppinglist.ui.component.home.SearchBar
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeScreenState
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeViewModel
-import com.grzegorz.baczek.shoppinglist.utils.compose.Todo
 import org.koin.androidx.compose.getViewModel
 
 private val dimens = object {

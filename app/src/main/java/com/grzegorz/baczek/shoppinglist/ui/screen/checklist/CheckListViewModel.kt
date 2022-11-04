@@ -39,11 +39,9 @@ class CheckListViewModel(
     }
 
     fun onShareButtonClick() {
-
     }
 
     fun onRemoveButtonClick() {
-
     }
 
     private fun getCheckList(id: Int) {

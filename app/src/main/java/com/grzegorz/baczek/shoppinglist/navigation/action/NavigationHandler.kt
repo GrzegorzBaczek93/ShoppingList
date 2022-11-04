@@ -1,6 +1,6 @@
 package com.grzegorz.baczek.shoppinglist.navigation.action
 
-import com.grzegorz.baczek.shoppinglist.navigation.destination.Screen
+import com.grzegorz.baczek.shoppinglist.navigation.destination.Destination
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
@@ -10,8 +10,8 @@ class NavigationHandler {
 
     fun getActionFlow() = currentAction.asStateFlow()
 
-    fun navigateTo(screen: Screen) {
-        currentAction.value = NavigationAction.NavigateTo(screen)
+    fun navigateTo(destination: Destination) {
+        currentAction.value = NavigationAction.NavigateTo(destination)
     }
 
     fun pop() {
