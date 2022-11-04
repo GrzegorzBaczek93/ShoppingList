@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val viewModelModule = module {
     viewModel { params -> NavigationViewModel(params.get(), get()) }
     viewModel { HomeViewModel(get(), get()) }
-    viewModel { CheckListViewModel(get()) }
+    viewModel { CheckListViewModel(get(), get()) }
 }

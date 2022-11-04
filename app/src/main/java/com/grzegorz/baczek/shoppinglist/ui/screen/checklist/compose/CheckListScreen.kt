@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.grzegorz.baczek.shoppinglist.R
 import com.grzegorz.baczek.shoppinglist.model.AppBarMenuItem
+import com.grzegorz.baczek.shoppinglist.model.CheckList
 import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBar
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenState
@@ -21,6 +22,7 @@ fun CheckListScreen(arguments: CheckListArguments) {
 
     CheckListScreen(
         viewState = viewModel.viewState,
+        checkList = viewModel.checkList,
         onBackButtonClick = viewModel::onBackButtonClick,
         onSwitchModeClick = viewModel::onSwitchModeClick,
         onRenewClick = viewModel::onRenewClick,
@@ -32,6 +34,7 @@ fun CheckListScreen(arguments: CheckListArguments) {
 @Composable
 private fun CheckListScreen(
     viewState: CheckListScreenState,
+    checkList: CheckList,
     onBackButtonClick: () -> Unit,
     onSwitchModeClick: () -> Unit,
     onRenewClick: () -> Unit,
@@ -40,7 +43,7 @@ private fun CheckListScreen(
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
         AppBar(
-            title = "",
+            title = checkList.title,
             startButton = AppBarMenuItem(
                 text = stringResource(id = R.string.back_label),
                 drawable = R.drawable.ic_arrow_back,
