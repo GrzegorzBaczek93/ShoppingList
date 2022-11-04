@@ -32,8 +32,6 @@ import org.koin.androidx.compose.getViewModel
 
 private val dimens = object {
     val contentPadding = 16.dp
-    val itemsSpacer = 8.dp
-    val listPaddingTop = 16.dp
 }
 
 @Composable
@@ -98,29 +96,4 @@ private fun HomeScreen(
             }
         }
     }
-}
-
-@Composable
-private fun HomeScreenContent(data: List<CheckList>, onCardClick: (Int) -> Unit) {
-    LazyColumn(
-        modifier = Modifier
-            .wrapContentHeight()
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.spacedBy(dimens.itemsSpacer),
-        contentPadding = PaddingValues(vertical = dimens.listPaddingTop),
-    ) {
-        items(data) { singleItem ->
-            Card(item = singleItem, onClick = onCardClick)
-        }
-    }
-}
-
-@Composable
-private fun HomeScreenEmpty() {
-    Todo()
-}
-
-@Composable
-private fun HomeScreenNotFound() {
-    Todo()
 }
