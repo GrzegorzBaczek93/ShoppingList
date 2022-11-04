@@ -14,6 +14,10 @@ class NavigationHandler {
         currentAction.value = NavigationAction.NavigateTo(destination)
     }
 
+    fun popTo(destination: Destination) {
+        currentAction.value = NavigationAction.PopTo(destination)
+    }
+
     fun pop() {
         currentAction.value = NavigationAction.Pop
     }
