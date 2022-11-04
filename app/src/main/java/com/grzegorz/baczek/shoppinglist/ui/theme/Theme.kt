@@ -92,8 +92,8 @@ fun ShoppingListTheme(
     if (!view.isInEditMode) {
         SideEffect {
             (view.context as Activity).window.let {
-                it.statusBarColor = colorScheme.primary.toArgb()
-                WindowCompat.getInsetsController(it, view).isAppearanceLightStatusBars = isDarkTheme
+                it.statusBarColor = colorScheme.surface.toArgb()
+                WindowCompat.getInsetsController(it, view).isAppearanceLightStatusBars = !isDarkTheme
             }
         }
     }
