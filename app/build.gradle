@@ -61,8 +61,6 @@ dependencies {
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
     debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
 
-    implementation("dev.olshevski.navigation:reimagined:1.2.0")
-
     implementation "io.insert-koin:koin-core:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_android_version"
     implementation "io.insert-koin:koin-androidx-compose:$koin_android_compose_version"

@@ -5,17 +5,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import com.grzegorz.baczek.shoppinglist.model.CheckList
-import com.grzegorz.baczek.shoppinglist.navigation.action.NavigationHandler
-import com.grzegorz.baczek.shoppinglist.navigation.destination.Screen
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
-import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
 import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 
 class HomeViewModel(
-    private val navigationHandler: NavigationHandler,
     private val repositoryService: IRepositoryService,
 ) : BaseViewModel<HomeArguments>() {
 
@@ -58,10 +54,10 @@ class HomeViewModel(
     }
 
     fun onAddClick() {
-        navigationHandler.navigateTo(Screen.CheckList(CheckListArguments()))
+        //TODO: Add navigation to check list with empty arguments
     }
 
     fun onCardClick(id: Int) {
-        navigationHandler.navigateTo(Screen.CheckList(CheckListArguments(id = id)))
+        //TODO: Add navigation to check list with id
     }
 }

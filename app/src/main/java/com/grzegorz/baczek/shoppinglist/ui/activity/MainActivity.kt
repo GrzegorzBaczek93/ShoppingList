@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.grzegorz.baczek.shoppinglist.ui.component.common.AppContainer
-import com.grzegorz.baczek.shoppinglist.ui.navigation.Navigation
 import com.grzegorz.baczek.shoppinglist.ui.theme.ShoppingListTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +12,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ShoppingListTheme {
                 AppContainer {
-                    Navigation()
+
                 }
             }
         }
