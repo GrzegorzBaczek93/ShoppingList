@@ -6,14 +6,14 @@ import androidx.compose.runtime.setValue
 import com.grzegorz.baczek.shoppinglist.model.CheckList
 import com.grzegorz.baczek.shoppinglist.model.cleared
 import com.grzegorz.baczek.shoppinglist.model.toggled
-import com.grzegorz.baczek.shoppinglist.navigation.action.NavigationHandler
+import com.grzegorz.baczek.shoppinglist.navigation.service.INavigationService
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
-import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
+import com.grzegorz.baczek.shoppinglist.utils.base.BaseScreenViewModel
 
 class CheckListViewModel(
-    private val navigationHandler: NavigationHandler,
     private val repositoryService: IRepositoryService,
-) : BaseViewModel<CheckListArguments>() {
+    private val navigationService: INavigationService,
+) : BaseScreenViewModel<CheckListArguments>() {
 
     var viewState by mutableStateOf<CheckListScreenState>(CheckListScreenState.Preview)
         private set
@@ -26,7 +26,7 @@ class CheckListViewModel(
     }
 
     fun onBackButtonClick() {
-        navigationHandler.pop()
+        navigationService.pop()
     }
 
     fun onSwitchModeClick() {
