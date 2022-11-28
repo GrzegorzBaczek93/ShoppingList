@@ -33,17 +33,33 @@ class NavigationService : INavigationService {
         updateState()
     }
 
+    override fun <T : Destination> popUntil(destination: KClass<T>) {
+        if (navStack.contains(destination)) {
+            popUntilInternally(destination)
+            updateState()
+        }
+    }
+
     private fun createNavEntryAndNavigate(destination: Destination) {
         navStack.push(
             NavEntry(
                 destination = destination,
                 viewModelStore = viewModelStoreProvider.getViewModelStore(destination.id),
-            )
+            ),
         )
     }
 
     private fun popAndClearViewModelStore() {
         navStack.pop()?.also { viewModelStoreProvider.clearViewModelStore(it.destination.id) }
+    }
+
+    private fun <T : Destination> popUntilInternally(destination: KClass<T>) {
+        var currentEntry = navStack.peek()
+
+        while (currentEntry != null && currentEntry.destination::class != destination) {
+            popAndClearViewModelStore()
+            currentEntry = navStack.peek()
+        }
     }
 
     private fun updateState() {
