@@ -4,6 +4,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import com.grzegorz.baczek.shoppinglist.navigation.utils.bind
 import com.grzegorz.baczek.shoppinglist.ui.dialog.doublebutton.DoubleButtonDialogArguments
 import com.grzegorz.baczek.shoppinglist.ui.dialog.doublebutton.DoubleButtonDialogState
@@ -31,19 +32,19 @@ private fun DoubleButtonDialog(
         onDismissRequest = state.onDismissClick,
         confirmButton = {
             TextButton(onClick = state.onConfirmClick) {
-                Text(text = state.confirmButtonText)
+                Text(text = stringResource(id = state.confirmButtonText))
             }
         },
         dismissButton = {
             TextButton(onClick = state.onDismissClick) {
-                Text(text = state.dismissButtonText)
+                Text(text = stringResource(id = state.dismissButtonText))
             }
         },
         title = {
-            Text(text = state.title)
+            Text(text = stringResource(id = state.title))
         },
         text = {
-            Text(text = state.text)
+            Text(text = stringResource(id = state.text))
         },
     )
 }

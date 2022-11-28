@@ -35,7 +35,7 @@ interface Destination {
     }
 
     sealed class Dialog : Destination {
-        data class DoubleButton(override val arguments: DoubleButtonDialogArguments): Screen() {
+        data class DoubleButton(override val arguments: DoubleButtonDialogArguments): Dialog() {
             @Composable
             override fun Content() {
                 DoubleButtonDialog(arguments = arguments)
