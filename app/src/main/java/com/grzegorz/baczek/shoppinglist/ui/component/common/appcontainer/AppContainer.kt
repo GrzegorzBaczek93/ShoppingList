@@ -1,4 +1,4 @@
-package com.grzegorz.baczek.shoppinglist.ui.component.common
+package com.grzegorz.baczek.shoppinglist.ui.component.common.appcontainer
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme

@@ -8,17 +8,17 @@ import androidx.lifecycle.viewModelScope
 import com.grzegorz.baczek.shoppinglist.navigation.destination.Destination
 import com.grzegorz.baczek.shoppinglist.navigation.service.INavigationService
 import com.grzegorz.baczek.shoppinglist.navigation.state.NavState
-import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
+import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeScreenArguments
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class MainActivityViewModel(
     private val navigationService: INavigationService,
-): ViewModel() {
+) : ViewModel() {
     var state by mutableStateOf<NavState>(NavState.Empty)
 
     init {
-        navigationService.navigateTo(Destination.Screen.Home(HomeArguments()))
+        navigationService.navigateTo(Destination.Screen.Home(HomeScreenArguments()))
         navigationService.getCurrentState().onEach {
             state = it
         }.launchIn(viewModelScope)

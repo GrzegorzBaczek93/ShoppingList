@@ -8,23 +8,23 @@ import com.grzegorz.baczek.shoppinglist.model.CheckList
 import com.grzegorz.baczek.shoppinglist.navigation.destination.Destination
 import com.grzegorz.baczek.shoppinglist.navigation.service.INavigationService
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
-import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
-import com.grzegorz.baczek.shoppinglist.utils.base.BaseScreenViewModel
+import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenArguments
+import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 
-class HomeViewModel(
+class HomeScreenViewModel(
     private val repositoryService: IRepositoryService,
     private val navigationService: INavigationService,
-) : BaseScreenViewModel<HomeArguments>() {
+) : BaseViewModel<HomeScreenArguments>() {
 
     private val searchFlow = MutableStateFlow("")
 
     var state by mutableStateOf<HomeScreenState>(HomeScreenState.Empty())
         private set
 
-    override fun onArgumentsObtained(args: HomeArguments) {
+    override fun onArgumentsObtained(args: HomeScreenArguments) {
         super.onArgumentsObtained(args)
         observeData()
     }
@@ -58,10 +58,10 @@ class HomeViewModel(
     }
 
     fun onAddClick() {
-        navigationService.navigateTo(Destination.Screen.CheckList(CheckListArguments()))
+        navigationService.navigateTo(Destination.Screen.CheckList(CheckListScreenArguments()))
     }
 
     fun onCardClick(id: Int) {
-        navigationService.navigateTo(Destination.Screen.CheckList(CheckListArguments(id)))
+        navigationService.navigateTo(Destination.Screen.CheckList(CheckListScreenArguments(id)))
     }
 }

@@ -30,10 +30,12 @@ class NavigationService : INavigationService {
     }
 
     private fun createNavEntryAndNavigate(destination: Destination) {
-        navStack.push(NavEntry(
-            destination = destination,
-            viewModelStore = viewModelStoreProvider.getViewModelStore(destination.id),
-        ))
+        navStack.push(
+            NavEntry(
+                destination = destination,
+                viewModelStore = viewModelStoreProvider.getViewModelStore(destination.id),
+            )
+        )
     }
 
     private fun popAndClearViewModelStore() {

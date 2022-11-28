@@ -8,17 +8,18 @@ import androidx.compose.ui.res.stringResource
 import com.grzegorz.baczek.shoppinglist.R
 import com.grzegorz.baczek.shoppinglist.model.AppBarMenuItem
 import com.grzegorz.baczek.shoppinglist.model.CheckList
+import com.grzegorz.baczek.shoppinglist.navigation.utils.bind
 import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBar
-import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
+import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenState
-import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListViewModel
+import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenViewModel
 import com.grzegorz.baczek.shoppinglist.utils.collection.addAll
 import org.koin.androidx.compose.getViewModel
 
 @Composable
-fun CheckListScreen(arguments: CheckListArguments) {
-    val viewModel = getViewModel<CheckListViewModel>()
-    viewModel.setArguments(arguments)
+fun CheckListScreen(arguments: CheckListScreenArguments) {
+    val viewModel = getViewModel<CheckListScreenViewModel>()
+    bind(viewModel = viewModel, arguments = arguments)
 
     CheckListScreen(
         viewState = viewModel.viewState,

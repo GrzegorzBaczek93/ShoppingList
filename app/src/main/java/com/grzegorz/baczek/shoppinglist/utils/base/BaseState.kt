@@ -1,6 +1,6 @@
 package com.grzegorz.baczek.shoppinglist.utils.base
 
 /**
- * Base ScreenState
+ * Base State
  */
-interface BaseScreenState
+interface BaseState

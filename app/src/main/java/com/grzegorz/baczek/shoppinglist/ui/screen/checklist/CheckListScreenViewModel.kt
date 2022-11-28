@@ -8,19 +8,19 @@ import com.grzegorz.baczek.shoppinglist.model.cleared
 import com.grzegorz.baczek.shoppinglist.model.toggled
 import com.grzegorz.baczek.shoppinglist.navigation.service.INavigationService
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
-import com.grzegorz.baczek.shoppinglist.utils.base.BaseScreenViewModel
+import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
 
-class CheckListViewModel(
+class CheckListScreenViewModel(
     private val repositoryService: IRepositoryService,
     private val navigationService: INavigationService,
-) : BaseScreenViewModel<CheckListArguments>() {
+) : BaseViewModel<CheckListScreenArguments>() {
 
     var viewState by mutableStateOf<CheckListScreenState>(CheckListScreenState.Preview)
         private set
 
     var checkList by mutableStateOf(CheckList.empty)
 
-    override fun onArgumentsObtained(args: CheckListArguments) {
+    override fun onArgumentsObtained(args: CheckListScreenArguments) {
         super.onArgumentsObtained(args)
         args.id?.let { getCheckList(it) } ?: setEditMode()
     }

@@ -14,11 +14,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.grzegorz.baczek.shoppinglist.R
 import com.grzegorz.baczek.shoppinglist.model.AppBarMenuItem
+import com.grzegorz.baczek.shoppinglist.navigation.utils.bind
 import com.grzegorz.baczek.shoppinglist.ui.component.common.appbar.AppBar
 import com.grzegorz.baczek.shoppinglist.ui.component.home.SearchBar
-import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
+import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeScreenArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeScreenState
-import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeViewModel
+import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeScreenViewModel
 import org.koin.androidx.compose.getViewModel
 
 private val dimens = object {
@@ -26,9 +27,9 @@ private val dimens = object {
 }
 
 @Composable
-fun HomeScreen(arguments: HomeArguments) {
-    val viewModel = getViewModel<HomeViewModel>()
-    viewModel.setArguments(arguments)
+fun HomeScreen(arguments: HomeScreenArguments) {
+    val viewModel = getViewModel<HomeScreenViewModel>()
+    bind(viewModel = viewModel, arguments = arguments)
 
     HomeScreen(
         state = viewModel.state,

@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import com.grzegorz.baczek.shoppinglist.navigation.ui.NavHost
-import com.grzegorz.baczek.shoppinglist.ui.component.common.AppContainer
+import com.grzegorz.baczek.shoppinglist.ui.component.common.appcontainer.AppContainer
 import com.grzegorz.baczek.shoppinglist.ui.theme.ShoppingListTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

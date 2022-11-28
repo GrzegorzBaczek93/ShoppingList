@@ -1,30 +1,32 @@
 package com.grzegorz.baczek.shoppinglist.navigation.destination
 
 import androidx.compose.runtime.Composable
-import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
+import com.grzegorz.baczek.shoppinglist.ui.dialog.doublebutton.DoubleButtonDialogArguments
+import com.grzegorz.baczek.shoppinglist.ui.dialog.doublebutton.compose.DoubleButtonDialog
+import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.compose.CheckListScreen
-import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeArguments
+import com.grzegorz.baczek.shoppinglist.ui.screen.home.HomeScreenArguments
 import com.grzegorz.baczek.shoppinglist.ui.screen.home.compose.HomeScreen
-import com.grzegorz.baczek.shoppinglist.utils.base.BaseScreenArguments
+import com.grzegorz.baczek.shoppinglist.utils.base.BaseArguments
 
 interface Destination {
     val id: String
         get() = this::class.qualifiedName!!
-    val arguments: BaseScreenArguments
+    val arguments: BaseArguments
 
     @Composable
     fun Content() {
     }
 
     sealed class Screen : Destination {
-        data class Home(override val arguments: HomeArguments) : Screen() {
+        data class Home(override val arguments: HomeScreenArguments) : Screen() {
             @Composable
             override fun Content() {
                 HomeScreen(arguments = arguments)
             }
         }
 
-        data class CheckList(override val arguments: CheckListArguments) : Screen() {
+        data class CheckList(override val arguments: CheckListScreenArguments) : Screen() {
             @Composable
             override fun Content() {
                 CheckListScreen(arguments = arguments)
@@ -33,6 +35,11 @@ interface Destination {
     }
 
     sealed class Dialog : Destination {
-
+        data class DoubleButton(override val arguments: DoubleButtonDialogArguments): Screen() {
+            @Composable
+            override fun Content() {
+                DoubleButtonDialog(arguments = arguments)
+            }
+        }
     }
 }

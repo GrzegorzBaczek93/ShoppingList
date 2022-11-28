@@ -10,7 +10,7 @@ import com.grzegorz.baczek.shoppinglist.navigation.destination.Destination
 class NavEntry(
     private val viewModelStore: ViewModelStore,
     val destination: Destination,
-): ViewModelStoreOwner {
+) : ViewModelStoreOwner {
 
     override fun getViewModelStore(): ViewModelStore = viewModelStore
 
