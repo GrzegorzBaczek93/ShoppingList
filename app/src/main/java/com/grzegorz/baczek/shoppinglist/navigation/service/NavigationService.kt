@@ -5,19 +5,23 @@ import com.grzegorz.baczek.shoppinglist.navigation.entry.NavEntry
 import com.grzegorz.baczek.shoppinglist.navigation.stack.NavStack
 import com.grzegorz.baczek.shoppinglist.navigation.state.NavState
 import com.grzegorz.baczek.shoppinglist.navigation.viewmodelstoreprovider.ViewModelStoreProvider
+import kotlin.reflect.KClass
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 class NavigationService : INavigationService {
 
     private val viewModelStoreProvider = ViewModelStoreProvider()
-    private val currentState = MutableStateFlow<NavState>(NavState.Empty)
+    private val currentScreenState = MutableStateFlow<NavState>(NavState.Empty)
+    private val currentDialogState = MutableStateFlow<NavState>(NavState.Empty)
     private val navStack = NavStack()
 
     override val isBackEnabled: Boolean
         get() = navStack.allowPop()
 
-    override fun getCurrentState() = currentState.asStateFlow()
+    override fun getCurrentScreenState() = currentScreenState.asStateFlow()
+
+    override fun getCurrentDialogState() = currentDialogState.asStateFlow()
 
     override fun navigateTo(destination: Destination) {
         createNavEntryAndNavigate(destination)
@@ -43,10 +47,10 @@ class NavigationService : INavigationService {
     }
 
     private fun updateState() {
-        currentState.value = NavState.Entry(
-            screenNavEntry = navStack.peek(Destination.Screen::class),
-            dialogNavEntry = navStack.peek(Destination.Dialog::class),
-        )
-        println("State: ${currentState.value}")
+        currentScreenState.value = getNewState(Destination.Screen::class)
+        currentDialogState.value = getNewState(Destination.Dialog::class)
     }
+
+    private fun <T : Destination> getNewState(type: KClass<T>): NavState =
+        navStack.peek(type)?.let { NavState.Entry(it) } ?: NavState.Empty
 }

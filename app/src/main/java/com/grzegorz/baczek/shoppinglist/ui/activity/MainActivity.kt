@@ -27,7 +27,8 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun Navigation() {
         NavHost(
-            state = viewModel.state,
+            screenState = viewModel.screenState,
+            dialogState = viewModel.dialogState,
             backEnabled = viewModel.isBackEnabled,
             onBack = viewModel::goBack,
         )

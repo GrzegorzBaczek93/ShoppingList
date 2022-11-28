@@ -7,7 +7,6 @@ sealed class NavState {
     object Empty : NavState()
 
     data class Entry(
-        val screenNavEntry: NavEntry?,
-        val dialogNavEntry: NavEntry?,
+        val entry: NavEntry
     ) : NavState()
 }

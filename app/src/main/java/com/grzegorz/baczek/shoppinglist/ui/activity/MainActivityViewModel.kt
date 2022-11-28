@@ -15,13 +15,13 @@ import kotlinx.coroutines.flow.onEach
 class MainActivityViewModel(
     private val navigationService: INavigationService,
 ) : ViewModel() {
-    var state by mutableStateOf<NavState>(NavState.Empty)
+    var screenState by mutableStateOf<NavState>(NavState.Empty)
+    var dialogState by mutableStateOf<NavState>(NavState.Empty)
 
     init {
         navigationService.navigateTo(Destination.Screen.Home(HomeScreenArguments()))
-        navigationService.getCurrentState().onEach {
-            state = it
-        }.launchIn(viewModelScope)
+        navigationService.getCurrentScreenState().onEach { screenState = it }.launchIn(viewModelScope)
+        navigationService.getCurrentDialogState().onEach { dialogState = it }.launchIn(viewModelScope)
     }
 
     val isBackEnabled

@@ -7,7 +7,9 @@ import kotlinx.coroutines.flow.StateFlow
 interface INavigationService {
     val isBackEnabled: Boolean
 
-    fun getCurrentState(): StateFlow<NavState>
+    fun getCurrentScreenState(): StateFlow<NavState>
+
+    fun getCurrentDialogState(): StateFlow<NavState>
 
     fun navigateTo(destination: Destination)
 
