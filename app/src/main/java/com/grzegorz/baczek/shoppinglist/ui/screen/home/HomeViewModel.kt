@@ -5,15 +5,19 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import com.grzegorz.baczek.shoppinglist.model.CheckList
+import com.grzegorz.baczek.shoppinglist.navigation.destination.Destination
+import com.grzegorz.baczek.shoppinglist.navigation.service.INavigationService
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
-import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
+import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListArguments
+import com.grzegorz.baczek.shoppinglist.utils.base.BaseScreenViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
 
 class HomeViewModel(
     private val repositoryService: IRepositoryService,
-) : BaseViewModel<HomeArguments>() {
+    private val navigationService: INavigationService,
+) : BaseScreenViewModel<HomeArguments>() {
 
     private val searchFlow = MutableStateFlow("")
 
@@ -54,10 +58,10 @@ class HomeViewModel(
     }
 
     fun onAddClick() {
-        //TODO: Add navigation to check list with empty arguments
+        navigationService.navigateTo(Destination.Screen.CheckList(CheckListArguments()))
     }
 
     fun onCardClick(id: Int) {
-        //TODO: Add navigation to check list with id
+        navigationService.navigateTo(Destination.Screen.CheckList(CheckListArguments(id)))
     }
 }

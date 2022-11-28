@@ -6,4 +6,4 @@ import android.os.Parcelable
  * Base interface for all arguments
  */
 
-interface BaseArguments : Parcelable
+interface BaseScreenArguments : Parcelable
