@@ -5,9 +5,9 @@ import com.grzegorz.baczek.shoppinglist.navigation.entry.NavEntry
 import com.grzegorz.baczek.shoppinglist.navigation.stack.NavStack
 import com.grzegorz.baczek.shoppinglist.navigation.state.NavState
 import com.grzegorz.baczek.shoppinglist.navigation.viewmodelstoreprovider.ViewModelStoreProvider
-import kotlin.reflect.KClass
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlin.reflect.KClass
 
 class NavigationService : INavigationService {
 

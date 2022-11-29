@@ -16,7 +16,11 @@
     <string name="share_label">Share</string>
     <string name="remove_label">Remove</string>
 
-    <!--  Dialog  -->
+    <!--  Remove Check List Dialog  -->
     <string name="remove_checklist_title_label">Delete list</string>
     <string name="remove_checklist_text_label">You are about to remove the list. Do you want to proceed?</string>
+
+    <!--  Refresh Check List Dialog -->
+    <string name="refresh_checklist_title_label">Refresh list</string>
+    <string name="refresh_checklist_text_label">You are about to refresh the list. Do you want to proceed?</string>
 </resources>

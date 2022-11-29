@@ -17,4 +17,18 @@ object DestinationHelper {
             onDismissClick = onDismissClick,
         ),
     )
+
+    fun getRefreshCheckListPopupDestination(
+        onConfirmClick: () -> Unit,
+        onDismissClick: () -> Unit,
+    ) = Destination.Dialog.DoubleButton(
+        DoubleButtonDialogArguments(
+            title = R.string.refresh_checklist_title_label,
+            text = R.string.refresh_checklist_text_label,
+            confirmButtonText = R.string.yes_label,
+            dismissButtonText = R.string.no_label,
+            onConfirmClick = onConfirmClick,
+            onDismissClick = onDismissClick,
+        ),
+    )
 }

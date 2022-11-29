@@ -6,6 +6,8 @@ import androidx.compose.runtime.setValue
 import com.grzegorz.baczek.shoppinglist.model.CheckList
 import com.grzegorz.baczek.shoppinglist.model.cleared
 import com.grzegorz.baczek.shoppinglist.model.toggled
+import com.grzegorz.baczek.shoppinglist.navigation.destination.Destination
+import com.grzegorz.baczek.shoppinglist.navigation.destination.DestinationHelper
 import com.grzegorz.baczek.shoppinglist.navigation.service.INavigationService
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
 import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
@@ -42,13 +44,34 @@ class CheckListScreenViewModel(
     }
 
     fun onRenewClick() {
-        checkList = checkList.cleared()
+        navigationService.navigateTo(
+            DestinationHelper.getRefreshCheckListPopupDestination(
+                onConfirmClick = {
+                    navigationService.pop()
+                    refreshList()
+                },
+                onDismissClick = {
+                    navigationService.pop()
+                },
+            )
+        )
     }
 
     fun onShareButtonClick() {
     }
 
     fun onRemoveButtonClick() {
+        navigationService.navigateTo(
+            DestinationHelper.getRemoveCheckListPopupDestination(
+                onConfirmClick = {
+                    navigationService.popUntil(Destination.Screen.Home::class)
+                    removeList()
+                },
+                onDismissClick = {
+                    navigationService.pop()
+                },
+            )
+        )
     }
 
     private fun getCheckList(id: Int) {
@@ -62,5 +85,13 @@ class CheckListScreenViewModel(
 
     private fun setPreviewMode() {
         viewState = CheckListScreenState.Preview
+    }
+
+    private fun removeList() {
+        repositoryService.removeCheckList(checkList)
+    }
+
+    private fun refreshList() {
+        checkList = checkList.cleared()
     }
 }
