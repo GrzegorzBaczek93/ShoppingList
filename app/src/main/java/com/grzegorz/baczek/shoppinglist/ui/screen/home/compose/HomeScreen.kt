@@ -56,12 +56,10 @@ private fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .pointerInput(null) {
-                detectTapGestures(
-                    onTap = {
-                        keyboardController?.hide()
-                        localFocusManager.clearFocus(true)
-                    }
-                )
+                detectTapGestures(onTap = {
+                    keyboardController?.hide()
+                    localFocusManager.clearFocus(true)
+                })
             },
     ) {
         AppBar(
@@ -83,6 +81,7 @@ private fun HomeScreen(
                 is HomeScreenState.Content -> HomeScreenContent(data = state.data, onCardClick = onCardClick)
                 is HomeScreenState.Empty -> HomeScreenEmpty()
                 is HomeScreenState.NotFound -> HomeScreenNotFound()
+                is HomeScreenState.Loading -> {}
             }
         }
     }

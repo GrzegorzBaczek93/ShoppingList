@@ -5,6 +5,10 @@ import com.grzegorz.baczek.shoppinglist.model.CheckList
 sealed class HomeScreenState(
     open val searchText: String,
 ) {
+    data class Loading(
+        override val searchText: String = "",
+    ) : HomeScreenState(searchText)
+
     data class Empty(
         override val searchText: String = "",
     ) : HomeScreenState(searchText)

@@ -4,6 +4,10 @@
     <string name="yes_label">Yes</string>
     <string name="no_label">No</string>
 
+    <!--  Home  -->
+    <string name="home_empty_label">You have no lists.\nGo ahead and add one! :)</string>
+    <string name="home_not_found_label">Your search text does not match any list :/</string>
+
     <!--  Search  -->
     <string name="search_placeholder">Search list</string>
 

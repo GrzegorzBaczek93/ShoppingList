@@ -23,7 +23,7 @@ class HomeScreenViewModel(
     private var dataJob: Job? = null
     private val searchFlow = MutableStateFlow("")
 
-    var state by mutableStateOf<HomeScreenState>(HomeScreenState.Empty())
+    var state by mutableStateOf<HomeScreenState>(HomeScreenState.Loading())
         private set
 
     override fun onResume() {

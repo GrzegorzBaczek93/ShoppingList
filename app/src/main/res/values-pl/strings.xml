@@ -5,6 +5,10 @@
     <string name="yes_label">Tak</string>
     <string name="no_label">Nie</string>
 
+    <!--  Home  -->
+    <string name="home_empty_label">Nie masz jeszcze list.\nŚmiało dodaj jedną! :)</string>
+    <string name="home_not_found_label">Wyszukiwana fraza nie pasuje do żadnej listy :/</string>
+
     <!--  Search  -->
     <string name="search_placeholder">Szukaj listy</string>
 
