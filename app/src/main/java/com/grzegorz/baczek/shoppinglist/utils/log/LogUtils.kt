@@ -3,7 +3,7 @@ package com.grzegorz.baczek.shoppinglist.utils.log
 import android.util.Log
 
 inline val <reified T> T.TAG: String
-    get() = T::class.java.name
+    get() = T::class.java.simpleName
 
 inline fun <reified T> T.logV(message: String) = Log.v(TAG, message)
 inline fun <reified T> T.logI(message: String) = Log.i(TAG, message)

@@ -10,6 +10,7 @@ import com.grzegorz.baczek.shoppinglist.navigation.service.INavigationService
 import com.grzegorz.baczek.shoppinglist.service.storage.IRepositoryService
 import com.grzegorz.baczek.shoppinglist.ui.screen.checklist.CheckListScreenArguments
 import com.grzegorz.baczek.shoppinglist.utils.base.BaseViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.launchIn
@@ -19,34 +20,23 @@ class HomeScreenViewModel(
     private val navigationService: INavigationService,
 ) : BaseViewModel<HomeScreenArguments>() {
 
+    private var dataJob: Job? = null
     private val searchFlow = MutableStateFlow("")
 
     var state by mutableStateOf<HomeScreenState>(HomeScreenState.Empty())
         private set
 
-    override fun onArgumentsObtained(args: HomeScreenArguments) {
-        super.onArgumentsObtained(args)
-        observeData()
-    }
-
-    private fun observeData() {
-        repositoryService.getCheckLists().combine(searchFlow) { data, searchText ->
+    override fun onResume() {
+        super.onResume()
+        clearDataJob()
+        dataJob = repositoryService.getCheckLists().combine(searchFlow) { data, searchText ->
             updateState(data, searchText)
         }.launchIn(viewModelScope)
     }
 
-    private fun updateState(data: List<CheckList>, searchText: String) {
-        state = when {
-            data.isEmpty() -> HomeScreenState.Empty(searchText)
-            searchText.isNotBlank() -> {
-                val filtered = data.filter { it.title.contains(searchText) }
-                when {
-                    filtered.isEmpty() -> HomeScreenState.NotFound(searchText)
-                    else -> HomeScreenState.Content(searchText, filtered)
-                }
-            }
-            else -> HomeScreenState.Content(searchText, data)
-        }
+    override fun onPause() {
+        super.onPause()
+        clearDataJob()
     }
 
     fun onSearchTextChanged(text: String) {
@@ -63,5 +53,24 @@ class HomeScreenViewModel(
 
     fun onCardClick(id: Int) {
         navigationService.navigateTo(Destination.Screen.CheckList(CheckListScreenArguments(id)))
+    }
+
+    private fun clearDataJob() {
+        dataJob?.cancel()
+        dataJob = null
+    }
+
+    private fun updateState(data: List<CheckList>, searchText: String) {
+        state = when {
+            data.isEmpty() -> HomeScreenState.Empty(searchText)
+            searchText.isNotBlank() -> {
+                val filtered = data.filter { it.title.contains(searchText) }
+                when {
+                    filtered.isEmpty() -> HomeScreenState.NotFound(searchText)
+                    else -> HomeScreenState.Content(searchText, filtered)
+                }
+            }
+            else -> HomeScreenState.Content(searchText, data)
+        }
     }
 }
